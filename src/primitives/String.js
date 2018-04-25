@@ -1,6 +1,24 @@
 
 (function(NS) {
 
+	if (!String.prototype.hasOwnProperty("Base64")) {
+		Object.defineProperty(String.prototype, "Base64", {
+			configurable: false,
+			enumerable: false,
+			get: function () {
+				var _ = this;
+				return {
+					"Decode": function () {
+						return "DEC"+_.toString();
+					},
+					"Encode": function () {
+						return "ENC"+_.toString();
+					}
+				}
+			}
+		});
+	}
+
 	if (!String.prototype.hasOwnProperty("Contains")) {
 		Object.defineProperty(String.prototype, "Contains", {
 			configurable: false,
