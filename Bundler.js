@@ -1,6 +1,15 @@
 const fs = require('fs');
 const minify = require("minify");
  
+
+ fs.readdir("src/primitives/String", function (err, files) {
+	console.log(files);
+ });
+
+ process.exit(0);
+
+
+
 var files = [
 	"src/primitives/String.js",
 	"src/primitives/Array.js",

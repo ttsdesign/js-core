@@ -1,97 +1,4 @@
-
-(function(NS) {
-
-	if (!String.prototype.hasOwnProperty("Base64")) {
-		Object.defineProperty(String.prototype, "Base64", {
-			configurable: false,
-			enumerable: false,
-			get: function () {
-				var data = this;
-				var o1, o2, o3, h1, h2, h3, h4, bits, i = 0, ac = 0, enc = '', tmp_arr = [], b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-				return {
-					"Decode": function () {
-						do {
-							h1 = b64.indexOf(data.charAt(i++));
-							h2 = b64.indexOf(data.charAt(i++));
-							h3 = b64.indexOf(data.charAt(i++));
-							h4 = b64.indexOf(data.charAt(i++));
-							bits = h1 << 18 | h2 << 12 | h3 << 6 | h4;
-							o1 = bits >> 16 & 0xff;
-							o2 = bits >> 8 & 0xff;
-							o3 = bits & 0xff;
-							if (h3 == 64) {
-								tmp_arr[ac++] = String.fromCharCode(o1);
-							} else if (h4 == 64) {
-								tmp_arr[ac++] = String.fromCharCode(o1, o2);
-							} else {
-								tmp_arr[ac++] = String.fromCharCode(o1, o2, o3);
-							}
-						} while (i < data.length);
-						dec = tmp_arr.join('');
-						return decodeURIComponent(escape(dec.replace(/\0+$/, '')));
-					},
-					"Encode": function () {
-						data = unescape(encodeURIComponent(data));
-						do {
-							o1 = data.charCodeAt(i++);
-							o2 = data.charCodeAt(i++);
-							o3 = data.charCodeAt(i++);
-							bits = o1 << 16 | o2 << 8 | o3;
-							h1 = bits >> 18 & 0x3f;
-							h2 = bits >> 12 & 0x3f;
-							h3 = bits >> 6 & 0x3f;
-							h4 = bits & 0x3f;
-							tmp_arr[ac++] = b64.charAt(h1) + b64.charAt(h2) + b64.charAt(h3) + b64.charAt(h4);
-						} while (i < data.length);
-						enc = tmp_arr.join('');
-						var r = data.length % 3;
-						return (r ? enc.slice(0, r - 3) : enc) + '==='.slice(r || 3);
-					}
-				}
-			}
-		});
-	}
-
-	if (!String.prototype.hasOwnProperty("Contains")) {
-		Object.defineProperty(String.prototype, "Contains", {
-			configurable: false,
-			enumerable: false,
-			value: function (s) {
-				return (this.indexOf(s) < 0) ? false : true
-			}
-		});
-	}
-
-	if (!String.prototype.hasOwnProperty("endsWith")) {
-		Object.defineProperty(String.prototype, "endsWith", {
-			configurable: false,
-			enumerable: false,
-			value: function (s) {
-				return this.match(s + "$") == s
-			}
-		});
-	}
-
-	if (!String.prototype.hasOwnProperty("EndsWith")) {
-		Object.defineProperty(String.prototype, "EndsWith", {
-			configurable: false,
-			enumerable: false,
-			value: function (s) {
-				return this.match(s + "$") == s
-			}
-		});
-	}
-
-	if (!String.prototype.hasOwnProperty("Escape")) {
-		Object.defineProperty(String.prototype, "Escape", {
-			configurable: false,
-			enumerable: false,
-			value: function () {
-				return this.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#x27;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\//g, '&#x2F;').replace(/\\/g, '&#x5C;').replace(/`/g, '&#96;')
-			}
-		});
-	}
-
+;(function() {
 	if (!String.prototype.hasOwnProperty("Hash")) {
 		Object.defineProperty(String.prototype, "Hash", {
 			configurable: false,
@@ -101,48 +8,6 @@
 			}
 		});
 	}
-
-	if (!String.prototype.hasOwnProperty("IsEmpty")) {
-		Object.defineProperty(String.prototype, "IsEmpty", {
-			configurable: false,
-			enumerable: false,
-			value: function () {
-				return (this.length === 0)
-			}
-		});
-	}
-	
-
-	if (!String.prototype.hasOwnProperty("startsWith")) {
-		Object.defineProperty(String.prototype, "startsWith", {
-			configurable: false,
-			enumerable: false,
-			value: function (s) {
-				return this.indexOf(s) === 0
-			}
-		});
-	}
-	
-	if (!String.prototype.hasOwnProperty("StartsWith")) {
-		Object.defineProperty(String.prototype, "StartsWith", {
-			configurable: false,
-			enumerable: false,
-			value: function (s) {
-				return this.indexOf(s) === 0
-			}
-		});
-	}
-
-	if (!String.prototype.hasOwnProperty("Unescape")) {
-		Object.defineProperty(String.prototype, "Unescape", {
-			configurable: false,
-			enumerable: false,
-			value: function () {
-				return this.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#x27;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#x2F;/g, '/').replace(/&#x5C;/g, '\\').replace(/&#96;/g, '`')
-			}
-		});
-	}
-	
 
 	function safeAdd(n,r){var a=(65535&n)+(65535&r);return(n>>16)+(r>>16)+(a>>16)<<16|65535&a}
 	function bitRotateLeft(r,d){return r<<d|r>>>32-d}
@@ -163,5 +28,4 @@
 	function hexMD5(r){return rstr2hex(rawMD5(r))}
 	function rawHMACMD5(r,d){return rstrHMACMD5(str2rstrUTF8(r),str2rstrUTF8(d))}
 	function hexHMACMD5(r,d){return rstr2hex(rawHMACMD5(r,d))}
-
-}(typeof window !== "undefined" ? window : (typeof global !== "undefined") ? global : this));
+}());
