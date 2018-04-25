@@ -1,5 +1,5 @@
-if (!Array.prototype.hasOwnProperty('IsArray')) {
-	Object.defineProperty(Array.prototype, 'IsArray', {
+if (!Object.prototype.hasOwnProperty('IsArray')) {
+	Object.defineProperty(Object.prototype, 'IsArray', {
 		configurable: false,
 		enumerable: false,
 		value: function() {
