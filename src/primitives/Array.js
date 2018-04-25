@@ -15,22 +15,6 @@
 		Object.defineProperty(Array.prototype, "RemoveElement", {
 			configurable: false,
 			enumerable: false,
-			value: function (e) {
-				e = JSON.stringify(e);
-				for (var i=this.length-1; i>=0; i--) {
-					if (JSON.stringify(this[i]) === e) {
-						this.RemoveIndex(i);
-					}
-				}
-				return this;
-			}
-		});
-	}
-
-	if (!Array.prototype.hasOwnProperty("RemoveElement")) {
-		Object.defineProperty(Array.prototype, "RemoveElement", {
-			configurable: false,
-			enumerable: false,
 			value: function () {
 				var elements = [];
 				Array.from(arguments).forEach(function (e) {
