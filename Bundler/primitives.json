@@ -1,9 +1,0 @@
-{
-	"files": [
-		"Bundler/_generated/primitives.String.js",
-		"Bundler/_generated/primitives.Array.js",
-		"Bundler/_generated/primitives.Object.js"
-	],
-	"destination": "Bundler/_generated/primitives.js",
-	"processor": "function (file, code) {return \"/*\"+file.replace(/^src\\//, \"\").replace(/\\//g, \".\")+\"*/\\n\"+code;}"
-}

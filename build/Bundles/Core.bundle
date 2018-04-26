@@ -1,0 +1,9 @@
+{
+	"files": [
+		"dist/String.js",
+		"dist/Array.js",
+		"dist/Object.js"
+	],
+	"destination": "dist/org.tts.js",
+	"processor": "function (file, code) {return \"/*\"+file.replace(/^dis\\//, \"\").replace(/\\//g, \".\")+\"*/\\n\"+code;}"
+}

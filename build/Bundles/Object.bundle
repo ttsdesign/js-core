@@ -8,6 +8,6 @@
 		"src/primitives/Object/Join.js",
 		"src/primitives/Object/Type.js"
 	],
-	"destination": "Bundler/_generated/primitives.Object.js",
-	"processor": "function (file, code) {return \"/*\"+file.replace(/^src\\//, \"\").replace(/\\//g, \".\")+\"*/\\n\"+code;}"
+	"destination": "dist/Object.js",
+	"processor": "function (file, code) {return \"/*\"+file.replace(/^src\\/primitives\\//, \"\").replace(/\\//g, \".\")+\"*/\\n\"+code;}"
 }

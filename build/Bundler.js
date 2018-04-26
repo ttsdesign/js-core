@@ -1,10 +1,10 @@
 var Bundle = require("./Bundle.js");
 
 var files = [
-	"Bundler/primitives.String.json",
-	"Bundler/primitives.Array.json",
-	"Bundler/primitives.Object.json",
-	"Bundler/primitives.json"
+	"build/Bundles/String.bundle",
+	"build/Bundles/Array.bundle",
+	"build/Bundles/Object.bundle",
+	"build/Bundles/Core.bundle"
 ];
 
 Bundler();

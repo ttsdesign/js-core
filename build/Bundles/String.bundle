@@ -9,6 +9,6 @@
 		"src/primitives/String/StartsWith.js",
 		"src/primitives/String/Unescape.js"
 	],
-	"destination": "Bundler/_generated/primitives.String.js",
-	"processor": "function (file, code) {return \"/*\"+file.replace(/^src\\//, \"\").replace(/\\//g, \".\")+\"*/\\n\"+code;}"
+	"destination": "dist/String.js",
+	"processor": "function (file, code) {return \"/*\"+file.replace(/^src\\/primitives\\//, \"\").replace(/\\//g, \".\")+\"*/\\n\"+code;}"
 }
