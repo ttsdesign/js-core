@@ -1,0 +1,13 @@
+{
+	"files": [
+		"src/primitives/Object/Contains.js",
+		"src/primitives/Object/Extend.js",
+		"src/primitives/Object/IsArray.js",
+		"src/primitives/Object/IsFunction.js",
+		"src/primitives/Object/IsType.js",
+		"src/primitives/Object/Join.js",
+		"src/primitives/Object/Type.js"
+	],
+	"destination": "Bundler/_generated/primitives.Object.js",
+	"processor": "function (file, code) {return \"/*\"+file.replace(/^src\\//, \"\").replace(/\\//g, \".\")+\"*/\\n\"+code;}"
+}

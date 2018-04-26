@@ -3,7 +3,7 @@ if (!Object.prototype.hasOwnProperty('IsType')) {
 		configurable: false,
 		enumerable: false,
 		value: function(type) {
-			return `[object ${type}]` == Object.prototype.toString.call(this)
+			return "[object "+type+"]" == Object.prototype.toString.call(this)
 		}
 	});
 }

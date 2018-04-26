@@ -1,0 +1,14 @@
+{
+	"files": [
+		"src/primitives/String/Base64.js",
+		"src/primitives/String/Contains.js",
+		"src/primitives/String/EndsWith.js",
+		"src/primitives/String/Escape.js",
+		"src/primitives/String/Hash.js",
+		"src/primitives/String/IsEmpty.js",
+		"src/primitives/String/StartsWith.js",
+		"src/primitives/String/Unescape.js"
+	],
+	"destination": "Bundler/_generated/primitives.String.js",
+	"processor": "function (file, code) {return \"/*\"+file.replace(/^src\\//, \"\").replace(/\\//g, \".\")+\"*/\\n\"+code;}"
+}
