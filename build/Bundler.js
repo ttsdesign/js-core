@@ -1,4 +1,20 @@
+fs = require("fs");
 var Bundle = require("./Bundle.js");
+
+
+var files = [];
+fs.readdirSync("build/Bundles").forEach(function (f) {
+	if (fs.statSync("build/Bundles/"+f).isFile()) {
+		files.push("build/Bundles/"+f);
+	}
+});
+
+
+console.log(files);
+
+
+/*
+
 
 var files = [
 	"build/Bundles/String.bundle",
@@ -17,3 +33,4 @@ function Bundler () {
 }
 
 
+*/
