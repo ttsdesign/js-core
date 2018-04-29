@@ -1,7 +1,7 @@
 fs = require("fs");
 var Bundle = require("./Bundle.js");
 
-
+/*
 var files = [];
 fs.readdirSync("build/Bundles").forEach(function (f) {
 	if (fs.statSync("build/Bundles/"+f).isFile()) {
@@ -11,16 +11,14 @@ fs.readdirSync("build/Bundles").forEach(function (f) {
 
 
 console.log(files);
-
-
-/*
+*/
 
 
 var files = [
-	"build/Bundles/String.bundle",
-	"build/Bundles/Array.bundle",
-	"build/Bundles/Object.bundle",
-	"build/Bundles/Core.bundle"
+	"build/Bundles/String.js",
+	"build/Bundles/Array.js",
+	"build/Bundles/Object.js",
+	"build/Bundles/org.tts.js"
 ];
 
 Bundler();
@@ -31,6 +29,3 @@ function Bundler () {
 		});
 	}
 }
-
-
-*/

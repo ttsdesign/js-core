@@ -1,5 +1,7 @@
 /*Array.Contains.js*/
 Array.prototype.hasOwnProperty("Contains")||Object.defineProperty(Array.prototype,"Contains",{configurable:!1,enumerable:!1,value:function(e){return this.includes(e)}});
+/*Array.from.js*/
+Array.hasOwnProperty("from")||Object.defineProperty(Array,"from",{configurable:!1,enumerable:!1,value:function(r){var e=[];for(var n in r)n in r?e.push(r[n]):e.push(n);return e}});
 /*Array.RemoveElement.js*/
 Array.prototype.hasOwnProperty("RemoveElement")||Object.defineProperty(Array.prototype,"RemoveElement",{configurable:!1,enumerable:!1,value:function(){var r=[];Array.from(arguments).forEach(function(e){r.push(JSON.stringify(e))});for(var t=this.length-1;0<=t;t--){var n=JSON.stringify(this[t]);r.some(function(e){if(n===e)return this.RemoveIndex(t),!0},this)}return this}});
 /*Array.RemoveIndex.js*/
