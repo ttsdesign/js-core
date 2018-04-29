@@ -8,8 +8,11 @@ if (!Date.prototype.hasOwnProperty("Span")) {
 			}
 			var _span = Math.abs(this - d);
 			var Span = {
-				"Value": function () {return _span},
-				"Days": function () {return _span/(1000*60*60*24)}
+				"Days": _span/(1000*60*60*24),
+				"Hours": _span/(1000*60*60),
+				"Minutes": _span/(1000*60),
+				"Seconds": _span/1000,
+				"Value": _span
 			};
 			return Span;
 		}
