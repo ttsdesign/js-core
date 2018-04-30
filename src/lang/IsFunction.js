@@ -3,8 +3,8 @@
 		Object.defineProperty(NS, 'IsFunction', {
 			configurable: false,
 			enumerable: false,
-			value: function() {
-				return '[object Function]' == Object.prototype.toString.call(this)
+			value: function(obj) {
+				return '[object Function]' == Object.prototype.toString.call(obj)
 			}
 		});
 	}

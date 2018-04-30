@@ -1,59 +1,14 @@
 
 var sources = {
-	"lang": [
-		"src/lang/Clone.js",
-		"src/lang/IsArray.js",
-		"src/lang/IsDefined.js",
-		"src/lang/IsEqual.js",
-		"src/lang/IsFunction.js",
-		"src/lang/IsType.js",
-		"src/lang/Type.js"
+	"Dependencies": [
+		"dist/org.tts.js.core.js"
 	],
-	"String": [
-		"src/lang/String/Base64.js",
-		"src/lang/String/Contains.js",
-		"src/lang/String/EndsWith.js",
-		"src/lang/String/Escape.js",
-		"src/lang/String/Hash.js",
-		"src/lang/String/IsEmpty.js",
-		"src/lang/String/Match.js",
-		"src/lang/String/StartsWith.js",
-		"src/lang/String/ToMatch.js",
-		"src/lang/String/Unescape.js"
-	],
-	"Array": [
-		"src/lang/Array/from.js",
-		"src/lang/Array/Contains.js",
-		"src/lang/Array/RemoveElement.js",
-		"src/lang/Array/RemoveIndex.js",
-		"src/lang/Array/Unique.js"
-	],
-	"Object": [
-		"src/lang/Object/Type.js",
-		"src/lang/Object/Contains.js",
-		"src/lang/Object/Extend.js",
-		"src/lang/Object/IsArray.js",
-		"src/lang/Object/IsFunction.js",
-		"src/lang/Object/IsType.js",
-		"src/lang/Object/Join.js",
-	],
-	"Date": [
-		"src/lang/Date/Constants.js",
-		"src/lang/Date/Range.js",
-		"src/lang/Date/Span.js"
-	],
-	"Platform": [
-		"src/Platform/GetContext.js",
-		"src/Platform/Logger.js"
-	],
-	"Fs": [
-		"src/Fs/Path.js"
-	],
-	//"Net": [
-	//	"src/Net/QueryString.js"
-	//]
+	"Browser": [
+		"src/[Browser]/InsertScript.js",
+		"src/[Browser]/InsertStyle.js"
+	]
 };
-var outputFile = "dist/org.tts.js.core.js";
+var outputFile = "dist/org.tts.js.[Browser]core.js";
 
 //////////////////////////////////////////////////////////////////////////////////
 ///// Nothing to Edit Below ////////////////////////////////////////////////////

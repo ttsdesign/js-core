@@ -3,8 +3,8 @@
 		Object.defineProperty(NS, 'IsType', {
 			configurable: false,
 			enumerable: false,
-			value: function(type) {
-				return "[object "+type+"]" == Object.prototype.toString.call(this)
+			value: function(obj, type) {
+				return "[object "+type+"]" == Object.prototype.toString.call(obj)
 			}
 		});
 	}
