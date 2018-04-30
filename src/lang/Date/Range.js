@@ -1,7 +1,7 @@
 (function(NS) {
 
-	if (!("DateRange" in NS)) {
-		NS.DateRange = function () {
+	if (!("Range" in NS.Date)) {
+		NS.Date.Range = function () {
 			var beg, end;
 			if (arguments.length == 0) {return undefined}
 			if (arguments.length == 1) {
