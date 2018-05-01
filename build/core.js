@@ -31,10 +31,12 @@ var sources = {
 		"src/lang/Array/Contains.js",
 		"src/lang/Array/RemoveElement.js",
 		"src/lang/Array/RemoveIndex.js",
+		"src/lang/Array/ToObject.js",
 		"src/lang/Array/Unique.js"
 	],
 	"Object": [
 		"src/lang/Object/Type.js",
+		"src/lang/Object/Clone.js",
 		"src/lang/Object/Contains.js",
 		"src/lang/Object/Extend.js",
 		"src/lang/Object/IsArray.js",

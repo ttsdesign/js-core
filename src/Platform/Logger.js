@@ -1,11 +1,20 @@
 (function(NS) {
+	
+	function _LOG () {
+		this.OUT.log(...arguments);
+	}
+
 	var _LOGGER = {
 		OUT: (NS.GetContext() == "Google") ? Logger : console
 	};
-	function _LOG () {
-		for (var i=0; i<arguments.length; i++) {
-			this.OUT.log(arguments[i]);
-		}
+
+	
+	if (!NS.hasOwnProperty("LOG")) {
+		Object.defineProperty(NS, "LOG", {
+			configurable: false,
+			enumerable: false,
+			value: _LOG.bind(_LOGGER)
+		});
 	}
 
 	if (!NS.hasOwnProperty("LOGGER")) {
@@ -18,12 +27,5 @@
 		});
 	}
 
-	if (!NS.hasOwnProperty("LOG")) {
-		Object.defineProperty(NS, "LOG", {
-			configurable: false,
-			enumerable: false,
-			value: _LOG.bind(_LOGGER)
-		});
-	}
 
 }(typeof window !== "undefined" ? window : (typeof global !== "undefined") ? global : this));

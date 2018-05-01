@@ -30,6 +30,8 @@ Array.hasOwnProperty("from")||Object.defineProperty(Array,"from",{configurable:!
 Array.prototype.hasOwnProperty("RemoveElement")||Object.defineProperty(Array.prototype,"RemoveElement",{configurable:!1,enumerable:!1,value:function(){var r=[];Array.from(arguments).forEach(function(e){r.push(JSON.stringify(e))});for(var t=this.length-1;0<=t;t--){var n=JSON.stringify(this[t]);r.some(function(e){if(n===e)return this.RemoveIndex(t),!0},this)}return this}});
 /* RemoveIndex.js */
 Array.prototype.hasOwnProperty("RemoveIndex")||Object.defineProperty(Array.prototype,"RemoveIndex",{configurable:!1,enumerable:!1,value:function(){return Array.from(arguments).sort(function(r,e){return e-r}).forEach(function(r){var e=this.splice(r);Array.prototype.push.apply(this,e.splice(1))},this),this}});
+/* ToObject.js */
+Array.prototype.hasOwnProperty("ToObject")||Object.defineProperty(Array.prototype,"ToObject",{configurable:!1,enumerable:!1,value:function(e){var r={};if(void 0!==e&&IsArray(e)&&this.length==e.length)for(var t=0;t<e.length;t++)r[e[t]]=this[t];else for(t=0;t<this.length-1;t+=2)r[this[t]]=this[t+1];return r}});
 /* Unique.js */
 Array.prototype.hasOwnProperty("Unique")||Object.defineProperty(Array.prototype,"Unique",{configurable:!1,enumerable:!1,value:function(){var n=[];return this.forEach(function(r,e){n.Contains(r)||n.push(r)}),n}});
 /* Type.js */
@@ -70,7 +72,7 @@ Date.prototype.hasOwnProperty("Span")||Object.defineProperty(Date.prototype,"Spa
 	/* GetContext.js */
 	NS.hasOwnProperty("GetContext")||Object.defineProperty(NS,"GetContext",{configurable:!1,enumerable:!1,value:function(){return"undefined"!=typeof window&&"[object Window]"==Object.prototype.toString.call(window)?"Browser":"undefined"!=typeof process&&"[object process]"==Object.prototype.toString.call(process)?"NodeJS":"undefined"!=typeof DriveApp&&"Drive"==DriveApp.toString()?"Google":"unknown"}});
 	/* Logger.js */
-	var _LOGGER={OUT:"Google"==NS.GetContext()?Logger:console};function _LOG(){for(var e=0;e<arguments.length;e++)this.OUT.log(arguments[e])}NS.hasOwnProperty("LOGGER")||Object.defineProperty(NS,"LOGGER",{configurable:!1,enumerable:!1,get:function(){return _LOGGER}}),NS.hasOwnProperty("LOG")||Object.defineProperty(NS,"LOG",{configurable:!1,enumerable:!1,value:_LOG.bind(_LOGGER)});
+	undefined
 	/* Path.js */
 	var _Path={Directory:function(n){return n.Contains("/")?n.substring(0,n.lastIndexOf("/")):n.Contains("\\")?n.substring(0,n.lastIndexOf("\\")):void 0},Extension:function(n){var t=this.File(n);if(void 0!==t&&t.Contains("."))return t.split(".").pop()},File:function(n){return n.Contains("/")?n.split("/").pop():n.Contains("\\")?n.split("\\").pop():n},Filename:function(n){return(n=n.substring(0,n.lastIndexOf("."))).Contains("/")?n.split("/").pop():n.Contains("\\")?n.split("\\").pop():n}};NS.hasOwnProperty("Path")||Object.defineProperty(NS,"Path",{configurable:!1,enumerable:!1,get:function(){return _Path}});
 	/* QueryString.js */
