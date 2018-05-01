@@ -7,6 +7,7 @@ var sources = {
 		"src/lang/IsEqual.js",
 		"src/lang/IsFunction.js",
 		"src/lang/IsType.js",
+		"src/lang/noop.js",
 		"src/lang/Type.js"
 	],
 	"String": [
@@ -22,7 +23,11 @@ var sources = {
 		"src/lang/String/Unescape.js"
 	],
 	"Array": [
+		"src/lang/Array/Difference.js",
 		"src/lang/Array/from.js",
+		"src/lang/Array/Intersection.js",
+		"src/lang/Array/Union.js",
+
 		"src/lang/Array/Contains.js",
 		"src/lang/Array/RemoveElement.js",
 		"src/lang/Array/RemoveIndex.js",
@@ -49,9 +54,9 @@ var sources = {
 	"Fs": [
 		"src/Fs/Path.js"
 	],
-	//"Net": [
-	//	"src/Net/QueryString.js"
-	//]
+	"Net": [
+		"src/Net/QueryString.js"
+	]
 };
 var outputFile = "dist/org.tts.js.core.js";
 
@@ -61,40 +66,33 @@ Path = require("path");
 Fs = require("fs");
 Uglify = require("uglify-js");
 
-var code = {};
+var code = {global:{}, ns:{}};
 Object.keys(sources).forEach(function (m) {
-	code[m] = {};
 	sources[m].forEach(function (f) {
 		var source = Fs.readFileSync(f, "utf8");
-		if (m == "Core.js") {
-			source = source
-				.replace(/\(function( )*\(NS\)( )*\{/, "")
-				.replace(/\}( )*\(typeof window !== "undefined" \? window : \(typeof global !== "undefined"\) \? global : this\)\);/, "");
+
+		if ((source.match(/\(function( )*\(NS\)( )*\{/) != null) && (source.match(/\}( )*\(typeof window !== "undefined" \? window : \(typeof global !== "undefined"\) \? global : this\)\);/) != null)) {
+			code.ns[f.substr(f.lastIndexOf("/")+1)] = Uglify.minify(source.replace(/\(function( )*\(NS\)( )*\{/, "").replace(/\}( )*\(typeof window !== "undefined" \? window : \(typeof global !== "undefined"\) \? global : this\)\);/, ""), {compress: {keep_fnames:true}, mangle: {keep_fnames:true}});
+		} else {
+			code.global[f.substr(f.lastIndexOf("/")+1)] = Uglify.minify(source, {compress: {keep_fnames:true}, mangle: {keep_fnames:true}});
 		}
-		
-		code[m][f.substr(f.lastIndexOf("/")+1)] = Uglify.minify(source, {compress: {keep_fnames:true}, mangle: {keep_fnames:true}});
 	});
 });
 
 
 var output = "";
-Object.keys(code).forEach(function (m) {
-	output += "/***** "+m+" *****/\n";
-	var indent = "";
-	if (m == "Core.js") {
-		output += "(function(NS) {\n";
-		indent = "\t";
-	}
-	Object.keys(code[m]).forEach(function (f) {
-		output += indent + "/* "+f+" */\n";
-		output += indent + code[m][f].code + "\n";
-	});
-	if (m == "Core.js") {
-		output += "}(typeof window !== \"undefined\" ? window : (typeof global !== \"undefined\") ? global : this));\n";
-	}
-
-	output += "\n";
+Object.keys(code.global).forEach(function (f) {
+	output += "/* "+f+" */\n";
+	output += code.global[f].code + "\n";
 });
+
+output += "(function(NS) {\n";
+Object.keys(code.ns).forEach(function (f) {
+	output += "\t/* "+f+" */\n";
+	output += "\t"+code.ns[f].code + "\n";
+});
+output += "}(typeof window !== \"undefined\" ? window : (typeof global !== \"undefined\") ? global : this));\n";
+
 
 Fs.writeFileSync(outputFile, output, "utf8");
 Fs.writeFileSync(outputFile.replace(/\.js$/, ".min.js"), Uglify.minify(output, {compress: {keep_fnames:true}, mangle: {keep_fnames:true}}).code, "utf8");

@@ -1,4 +1,4 @@
-(function(NS) {if (!Object.prototype.hasOwnProperty('Type')) {
+(function(NS) {
 	if (!NS.hasOwnProperty('Type')) {
 		Object.defineProperty(NS, 'Type', {
 			configurable: false,

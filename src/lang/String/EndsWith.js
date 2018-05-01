@@ -12,8 +12,6 @@ if (!String.prototype.hasOwnProperty("EndsWith")) {
 	Object.defineProperty(String.prototype, "EndsWith", {
 		configurable: false,
 		enumerable: false,
-		value: function (s) {
-			return this.endsWith(s)
-		}
+		value: String.prototype.endsWith
 	});
 }

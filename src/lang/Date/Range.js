@@ -1,7 +1,8 @@
-(function(NS) {
-
-	if (!("Range" in NS.Date)) {
-		NS.Date.Range = function () {
+if (!Date.hasOwnProperty("Range")) {
+	Object.defineProperty(Date, "Range", {
+		configurable: false,
+		enumerable: false,
+		value: function () {
 			var beg, end;
 			if (arguments.length == 0) {return undefined}
 			if (arguments.length == 1) {
@@ -72,6 +73,6 @@
 			});
 
 			return this;
-		};
-	}
-}(typeof window !== "undefined" ? window : (typeof global !== "undefined") ? global : this));
+		}
+	});
+}

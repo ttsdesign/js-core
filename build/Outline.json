@@ -1,0 +1,58 @@
+{
+    "Array": [
+		"from"
+	],
+    "Array.prototype": [
+        "Contains",
+        "RemoveElement",
+        "RemoveIndex",
+        "Unique"
+    ],
+    "Object": [
+        "Clone",
+        "Type"
+    ],
+    "Object.prototype": [
+        "Contains",
+        "Extend",
+        "IsArray",
+        "IsFunction",
+        "IsType",
+        "Join",
+        "Type"
+    ],
+    "String.prototype": [
+        "Base64",
+        "Contains",
+		"endsWith",
+        "EndsWith",
+        "Escape",
+        "Hash",
+        "IsEmpty",
+        "Match",
+        "startsWith",
+        "StartsWith",
+        "ToMatch",
+        "Unescape"
+    ],
+    "Date": [
+        "SECOND",
+        "MINUTE",
+        "HOUR",
+        "DAY",
+        "Range",
+		"Span"
+    ],
+    "Global": [
+        "IsArray",
+        "IsDefined",
+        "IsEqual",
+        "IsFunction",
+        "IsType",
+        "GetContext",
+        "InsertScript",
+        "LOGGER",
+        "LOG",
+        "Path"
+    ]
+}"

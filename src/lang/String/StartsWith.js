@@ -12,8 +12,6 @@ if (!String.prototype.hasOwnProperty("StartsWith")) {
 	Object.defineProperty(String.prototype, "StartsWith", {
 		configurable: false,
 		enumerable: false,
-		value: function (s) {
-			return this.startsWith(s)
-		}
+		value: String.prototype.startsWith
 	});
 }
