@@ -60,13 +60,16 @@ var sources = {
 		"src/Net/QueryString.js"
 	]
 };
-var outputFile = "dist/org.tts.js.core.js";
+var outputFile = "dist/org.tts.js.core-$VERSION$.js";
 
 //////////////////////////////////////////////////////////////////////////////////
 ///// Nothing to Edit Below ////////////////////////////////////////////////////
 Path = require("path");
 Fs = require("fs");
 Uglify = require("uglify-js");
+
+var version = Fs.readFileSync(".version", "utf8").trim();
+outputFile = outputFile.replace(/\$VERSION\$/, version);
 
 var code = {global:{}, ns:{}};
 Object.keys(sources).forEach(function (m) {
