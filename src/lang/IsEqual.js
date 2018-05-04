@@ -220,7 +220,7 @@ var freeGlobal = "object" == typeof global && global && global.Object === Object
 	}
 
 	function mapCacheDelete(e) {
-		return getMapData(this, e).delete(e)
+		return getMapData(this, e).deleter(e)
 	}
 
 	function mapCacheGet(e) {
@@ -258,7 +258,7 @@ var freeGlobal = "object" == typeof global && global && global.Object === Object
 	}
 
 	function stackDelete(e) {
-		return this.__data__.delete(e)
+		return this.__data__.deleter(e)
 	}
 
 	function stackGet(e) {
@@ -369,7 +369,7 @@ var freeGlobal = "object" == typeof global && global && global.Object === Object
 				break
 			}
 		}
-		return n.delete(e), n.delete(t), y
+		return n.deleter(e), n.deleter(t), y
 	}
 
 	function equalByTag(e, t, a, r, o, n, s) {
@@ -397,7 +397,7 @@ var freeGlobal = "object" == typeof global && global && global.Object === Object
 				if (u) return u == t;
 				n |= UNORDERED_COMPARE_FLAG, s.set(e, t);
 				var g = equalArrays(i(e), i(t), r, o, n, s);
-				return s.delete(e), g;
+				return s.deleter(e), g;
 			case symbolTag:
 				if (symbolValueOf) return symbolValueOf.call(e) == symbolValueOf.call(t)
 		}
@@ -432,7 +432,7 @@ var freeGlobal = "object" == typeof global && global && global.Object === Object
 				_ = t.constructor;
 			b != _ && "constructor" in e && "constructor" in t && !("function" == typeof b && b instanceof b && "function" == typeof _ && _ instanceof _) && (p = !1)
 		}
-		return n.delete(e), n.delete(t), p
+		return n.deleter(e), n.deleter(t), p
 	}
 
 	function getMapData(e, t) {
@@ -444,7 +444,7 @@ var freeGlobal = "object" == typeof global && global && global.Object === Object
 		var a = getValue(e, t);
 		return baseIsNative(a) ? a : void 0
 	}
-	Hash.prototype.clear = hashClear, Hash.prototype.delete = hashDelete, Hash.prototype.get = hashGet, Hash.prototype.has = hashHas, Hash.prototype.set = hashSet, ListCache.prototype.clear = listCacheClear, ListCache.prototype.delete = listCacheDelete, ListCache.prototype.get = listCacheGet, ListCache.prototype.has = listCacheHas, ListCache.prototype.set = listCacheSet, MapCache.prototype.clear = mapCacheClear, MapCache.prototype.delete = mapCacheDelete, MapCache.prototype.get = mapCacheGet, MapCache.prototype.has = mapCacheHas, MapCache.prototype.set = mapCacheSet, SetCache.prototype.add = SetCache.prototype.push = setCacheAdd, SetCache.prototype.has = setCacheHas, Stack.prototype.clear = stackClear, Stack.prototype.delete = stackDelete, Stack.prototype.get = stackGet, Stack.prototype.has = stackHas, Stack.prototype.set = stackSet;
+	Hash.prototype.clear = hashClear, Hash.prototype.deleter = hashDelete, Hash.prototype.get = hashGet, Hash.prototype.has = hashHas, Hash.prototype.set = hashSet, ListCache.prototype.clear = listCacheClear, ListCache.prototype.deleter = listCacheDelete, ListCache.prototype.get = listCacheGet, ListCache.prototype.has = listCacheHas, ListCache.prototype.set = listCacheSet, MapCache.prototype.clear = mapCacheClear, MapCache.prototype.deleter = mapCacheDelete, MapCache.prototype.get = mapCacheGet, MapCache.prototype.has = mapCacheHas, MapCache.prototype.set = mapCacheSet, SetCache.prototype.add = SetCache.prototype.push = setCacheAdd, SetCache.prototype.has = setCacheHas, Stack.prototype.clear = stackClear, Stack.prototype.deleter = stackDelete, Stack.prototype.get = stackGet, Stack.prototype.has = stackHas, Stack.prototype.set = stackSet;
 	var getTag = baseGetTag;
 
 	function isIndex(e, t) {

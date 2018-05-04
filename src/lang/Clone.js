@@ -230,7 +230,7 @@
 	}
 
 	function mapCacheDelete(e) {
-		return getMapData(this, e).delete(e)
+		return getMapData(this, e).deleter(e)
 	}
 
 	function mapCacheGet(e) {
@@ -254,7 +254,7 @@
 	}
 
 	function stackDelete(e) {
-		return this.__data__.delete(e)
+		return this.__data__.deleter(e)
 	}
 
 	function stackGet(e) {
@@ -422,7 +422,7 @@
 		var a = getValue(e, t);
 		return baseIsNative(a) ? a : void 0
 	}
-	Hash.prototype.clear = hashClear, Hash.prototype.delete = hashDelete, Hash.prototype.get = hashGet, Hash.prototype.has = hashHas, Hash.prototype.set = hashSet, ListCache.prototype.clear = listCacheClear, ListCache.prototype.delete = listCacheDelete, ListCache.prototype.get = listCacheGet, ListCache.prototype.has = listCacheHas, ListCache.prototype.set = listCacheSet, MapCache.prototype.clear = mapCacheClear, MapCache.prototype.delete = mapCacheDelete, MapCache.prototype.get = mapCacheGet, MapCache.prototype.has = mapCacheHas, MapCache.prototype.set = mapCacheSet, Stack.prototype.clear = stackClear, Stack.prototype.delete = stackDelete, Stack.prototype.get = stackGet, Stack.prototype.has = stackHas, Stack.prototype.set = stackSet;
+	Hash.prototype.clear = hashClear, Hash.prototype.deleter = hashDelete, Hash.prototype.get = hashGet, Hash.prototype.has = hashHas, Hash.prototype.set = hashSet, ListCache.prototype.clear = listCacheClear, ListCache.prototype.deleter = listCacheDelete, ListCache.prototype.get = listCacheGet, ListCache.prototype.has = listCacheHas, ListCache.prototype.set = listCacheSet, MapCache.prototype.clear = mapCacheClear, MapCache.prototype.deleter = mapCacheDelete, MapCache.prototype.get = mapCacheGet, MapCache.prototype.has = mapCacheHas, MapCache.prototype.set = mapCacheSet, Stack.prototype.clear = stackClear, Stack.prototype.deleter = stackDelete, Stack.prototype.get = stackGet, Stack.prototype.has = stackHas, Stack.prototype.set = stackSet;
 	var getSymbols = nativeGetSymbols ? overArg(nativeGetSymbols, Object) : stubArray,
 		getTag = baseGetTag;
 
