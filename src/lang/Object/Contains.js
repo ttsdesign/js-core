@@ -3,7 +3,10 @@ if (!Object.prototype.hasOwnProperty("Contains")) {
 		configurable: false,
 		enumerable: false,
 		value: function (s) {
-			return Object.keys(this).Contains(s)
+			if (IsType(this, "String") || IsType(this, "Array")) {
+				return (this.indexOf(s) != -1);
+			}
+			return Object.keys(this).includes(s)
 		}
 	})
 }

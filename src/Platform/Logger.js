@@ -1,7 +1,7 @@
 (function(NS) {
 	
 	function _LOG () {
-		this.OUT.log.apply(arguments);
+		this.OUT.log.apply(this.OUT, arguments);
 	}
 
 	var _LOGGER = {

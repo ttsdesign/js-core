@@ -12,7 +12,6 @@ var sources = {
 	],
 	"String": [
 		"src/lang/String/Base64.js",
-		"src/lang/String/Contains.js",
 		"src/lang/String/EndsWith.js",
 		"src/lang/String/Escape.js",
 		"src/lang/String/Hash.js",
@@ -28,7 +27,6 @@ var sources = {
 		"src/lang/Array/Intersection.js",
 		"src/lang/Array/Union.js",
 
-		"src/lang/Array/Contains.js",
 		"src/lang/Array/RemoveElement.js",
 		"src/lang/Array/RemoveIndex.js",
 		"src/lang/Array/ToObject.js",
@@ -77,9 +75,9 @@ Object.keys(sources).forEach(function (m) {
 		var source = Fs.readFileSync(f, "utf8");
 
 		if ((source.match(/\(function( )*\(NS\)( )*\{/) != null) && (source.match(/\}( )*\(typeof window !== "undefined" \? window : \(typeof global !== "undefined"\) \? global : this\)\);/) != null)) {
-			code.ns[f.substr(f.lastIndexOf("/")+1)] = Uglify.minify(source.replace(/\(function( )*\(NS\)( )*\{/, "").replace(/\}( )*\(typeof window !== "undefined" \? window : \(typeof global !== "undefined"\) \? global : this\)\);/, ""), {compress: {keep_fnames:true}, mangle: {keep_fnames:true}});
+			code.ns[f.substr(f.lastIndexOf("/")+1)] = Uglify.minify(source.replace(/\(function( )*\(NS\)( )*\{/, "").replace(/\}( )*\(typeof window !== "undefined" \? window : \(typeof global !== "undefined"\) \? global : this\)\);/, ""), {compress: {keep_fnames:true, dead_code:false}, mangle: {keep_fnames:true}});
 		} else {
-			code.global[f.substr(f.lastIndexOf("/")+1)] = Uglify.minify(source, {compress: {keep_fnames:true}, mangle: {keep_fnames:true}});
+			code.global[f.substr(f.lastIndexOf("/")+1)] = Uglify.minify(source, {compress: {keep_fnames:true, dead_code:false}, mangle: {keep_fnames:true}});
 		}
 	});
 });
