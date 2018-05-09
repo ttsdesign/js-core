@@ -15,7 +15,7 @@
 			if (path.Contains("\\")) {
 				return path.substring(0, path.lastIndexOf("\\"));
 			}
-			return undefined;
+			return "";
 		},
 		"Extension": function (path) {
 			var filename = this.File(path);
@@ -24,7 +24,7 @@
 					return filename.split(".").pop();
 				}
 			}
-			return undefined;
+			return "";
 		},
 		"File": function (path) {
 			if (path.Contains("/")) {
@@ -35,7 +35,7 @@
 			return path;
 		},
 		"Filename": function (path) {
-			path = path.substring(0, path.lastIndexOf("."));
+			path = (path.Contains(".")) ? path.substring(0, path.lastIndexOf(".")) : path;
 			if (path.Contains("/")) {
 				return path.split("/").pop();
 			} else if (path.Contains("\\")) {

@@ -1,10 +1,11 @@
 
 var sources = {
 	"lang": [
-		"src/lang/Clone.js",
+		"src/lodash.js",
+		//"src/lang/Clone.js",
 		"src/lang/IsArray.js",
 		"src/lang/IsDefined.js",
-		"src/lang/IsEqual.js",
+		//"src/lang/IsEqual.js",
 		"src/lang/IsFunction.js",
 		"src/lang/IsType.js",
 		"src/lang/noop.js",
@@ -22,10 +23,10 @@ var sources = {
 		"src/lang/String/Unescape.js"
 	],
 	"Array": [
-		"src/lang/Array/Difference.js",
+		//"src/lang/Array/Difference.js",
 		"src/lang/Array/from.js",
-		"src/lang/Array/Intersection.js",
-		"src/lang/Array/Union.js",
+		//"src/lang/Array/Intersection.js",
+		//"src/lang/Array/Union.js",
 
 		"src/lang/Array/RemoveElement.js",
 		"src/lang/Array/RemoveIndex.js",
