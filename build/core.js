@@ -2,6 +2,7 @@
 var sources = {
 	"lang": [
 		"src/lodash.js",
+		"src/lang/Assert.js",
 		//"src/lang/Clone.js",
 		"src/lang/IsArray.js",
 		"src/lang/IsDefined.js",
@@ -23,9 +24,9 @@ var sources = {
 		"src/lang/String/Unescape.js"
 	],
 	"Array": [
-		//"src/lang/Array/Difference.js",
+		"src/lang/Array/Difference.js",
 		"src/lang/Array/from.js",
-		//"src/lang/Array/Intersection.js",
+		"src/lang/Array/Intersection.js",
 		//"src/lang/Array/Union.js",
 
 		"src/lang/Array/RemoveElement.js",

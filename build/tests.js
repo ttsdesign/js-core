@@ -13,7 +13,7 @@ Uglify = require("uglify-js");
 
 var version = Fs.readFileSync(".version", "utf8").trim();
 
-var helpersCode = Fs.readFileSync(testHelpersFile, "utf8");
+var helpersCode = "Object.keys(Tests).forEach(function (f) {\r\n\tTests[f]();\r\n});"
 
 var sourcesCode = [];
 sources.forEach(function (f) {

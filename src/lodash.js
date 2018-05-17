@@ -136,6 +136,28 @@ IsEqual
 		return -1
 	}
 
+	function baseIntersection(t, e, a) {
+		for (var r = a ? arrayIncludesWith : arrayIncludes, n = t[0].length, o = t.length, s = o, c = Array(o), i = 1 / 0, h = []; s--;) {
+			var u = t[s];
+			s && e && (u = arrayMap(u, baseUnary(e))), i = nativeMin(u.length, i), c[s] = !a && (e || n >= 120 && u.length >= 120) ? new SetCache(s && u) : void 0
+		}
+		u = t[0];
+		var l = -1,
+			f = c[0];
+		t: for (; ++l < n && h.length < i;) {
+			var p = u[l],
+				_ = e ? e(p) : p;
+			if (p = a || 0 !== p ? p : 0, !(f ? cacheHas(f, _) : r(h, _, a))) {
+				for (s = o; --s;) {
+					var y = c[s];
+					if (!(y ? cacheHas(y, _) : r(t[s], _, a))) continue t
+				}
+				f && f.push(_), h.push(p)
+			}
+		}
+		return h
+	}
+
 	function baseIsNaN(e) {
 		return e != e
 	}
@@ -159,6 +181,10 @@ IsEqual
 
 	function cacheHas(e, t) {
 		return e.has(t)
+	}
+
+	function castArrayLikeObject(t) {
+		return isArrayLikeObject(t) ? t : []
 	}
 
 	function getValue(e, t) {
@@ -205,6 +231,8 @@ IsEqual
 		}(),
 		funcToString = funcProto.toString,
 		hasOwnProperty = objectProto.hasOwnProperty,
+		nativeMax = Math.max,
+		nativeMin = Math.min,
 		objectToString = objectProto.toString,
 		reIsNative = RegExp("^" + funcToString.call(hasOwnProperty).replace(reRegExpChar, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$"),
 		Buffer = moduleExports ? root.Buffer : void 0,
@@ -886,6 +914,16 @@ IsEqual
 			configurable: false,
 			enumerable: false,
 			value: difference
+		});
+	}
+
+	if (!Array.hasOwnProperty("DifferenceBoth")) {
+		Object.defineProperty(Array, "DifferenceBoth", {
+			configurable: false,
+			enumerable: false,
+			value: function (a, b) {
+				return Array.Difference(a, b).concat(Array.Difference(b, a));
+			}
 		});
 	}
 
