@@ -11,7 +11,7 @@ if (!Date.hasOwnProperty("Range")) {
 					end = new Date(beg - arguments[0]);
 				} else {return undefined}
 			}
-			if (arguments > 1) {
+			if (arguments.length > 1) {
 				if (arguments[0].IsType("Date")) {beg = arguments[0]}
 				else {beg = new Date(arguments[0])}
 				if (arguments[1].IsType("Date")) {end = arguments[1]}
