@@ -1,5 +1,7 @@
 #!/usr/bin/env node
  
+ console.log(process.cwd());
+
 const Fs = require("fs");
 var pkg = JSON.parse(Fs.readFileSync("package.json", "utf8"));
 
@@ -23,6 +25,11 @@ program
 	.command("make [target]")
 	.description("Make the target")
 	.action(Make);
+
+program.on("--help", function () {
+
+
+});
 
 program.parse(process.argv);
 

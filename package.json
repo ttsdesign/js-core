@@ -1,6 +1,6 @@
 {
 	"name": "org.tts.js.core",
-	"version": "1.0",
+	"version": "0.1.0",
 	"title": "Javascript Core Libraries",
 	"description": "TTS Design's javascript core libraries for GScript, NodeJS & Browser implementations",
 	"license": "MIT",
@@ -23,7 +23,8 @@
 	],
 	"dependencies": {},
 	"devDependencies": {
-		"uglify-js": "3.3.24"
+		"uglify-js": "3.3.24",
+		"commander": "2.15.1"
 	},
 	"main": "dist/org.tts.js.core.js",
 	"directories": {
@@ -36,6 +37,9 @@
 		"tests": "./tests",
 		"tools": "./tools"
 	},
+	"bin": {
+		"TTSMaker": "tools/TTSMake"
+	},
 	"scripts": {
 		"make": "node ${tools}/Make.js",
 		"docs": "start ${dist}/docs/index.html",
@@ -44,13 +48,13 @@
 		"test": "node ${dist}/Tests.js"
 	},
 	"builds": {
-		"DEFAULT": "main",
+		"main": ["libs"],
+
 		"all": ["main", "docs", "examples", "tests"],
 		"clean": [],
 		"docs": ["main"],
 		"examples": ["main"],
 		"libs": [],
-		"main": ["libs"],
 		"tests": ["main"]
 	}
 }
